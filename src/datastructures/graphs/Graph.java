@@ -14,9 +14,15 @@ class Graph {
     }
   }
 
-  void addEdge(int vertex1, int vertex2) {
+  void addDirectedEdge(int vertex1, int vertex2) {
     vertices.get(vertex1).add(vertex2);
   }
+
+  void addUndirectedEdge(int vertex1, int vertex2) {
+    vertices.get(vertex1).add(vertex2);
+    vertices.get(vertex2).add(vertex1);
+  }
+
 
   void print() {
     int i = 0;
@@ -32,6 +38,9 @@ class Graph {
 
   void removeEdge(Integer vertex1, Integer vertex2) {
     vertices.get(vertex1).remove(vertex2);
+  }
 
+  List<Integer> getAdjacentNodes(Integer node) {
+    return vertices.get(node);
   }
 }
