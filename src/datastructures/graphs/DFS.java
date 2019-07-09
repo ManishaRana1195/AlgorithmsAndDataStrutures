@@ -28,7 +28,6 @@ public class DFS {
   }
 
   private static void dfsForVertex(Graph graph, boolean[] isVisited, Stack<Integer> visitedNodes) {
-
     while (!visitedNodes.isEmpty()) {
       Integer current = visitedNodes.pop();
       if (!isVisited[current]) {
