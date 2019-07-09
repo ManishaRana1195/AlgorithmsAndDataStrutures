@@ -13,17 +13,18 @@ public class PatternMatching {
   private static void matchPattern(String pattern, String input) {
     int patternLen = pattern.length();
     int inputLen = input.length();
-    for (int i = 0; i < inputLen - patternLen; ) {
+    for (int i = 0; i < inputLen - patternLen; i++) {
       for (int j = 0; j < patternLen; ) {
+        if (pattern.charAt(j) != input.charAt(i)) {
+          break;
+        }
+
         if (pattern.charAt(j) == input.charAt(i)) {
           i++;
           j++;
           if (j == patternLen) {
             System.out.println("Pattern found at " + (i - patternLen));
           }
-        } else {
-          i++;
-          j = 0;
         }
       }
     }
