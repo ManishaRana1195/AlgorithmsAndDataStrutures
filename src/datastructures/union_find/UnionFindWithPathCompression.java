@@ -21,12 +21,12 @@ public class UnionFindWithPathCompression {
 
     if (rootP == rootQ) return;
 
-    if (_treeSize[nodeP] > _treeSize[nodeQ]) {
-      _treeSize[nodeP] += _treeSize[nodeQ];
-      _nodes[nodeQ] = rootP;
+    if (_treeSize[rootP] > _treeSize[rootQ]) {
+      _treeSize[rootP] += _treeSize[rootQ];
+      _nodes[rootQ] = rootP;
     } else {
-      _treeSize[nodeQ] += _treeSize[nodeP];
-      _nodes[nodeP] = rootQ;
+      _treeSize[rootQ] += _treeSize[rootP];
+      _nodes[rootP] = rootQ;
     }
   }
 
