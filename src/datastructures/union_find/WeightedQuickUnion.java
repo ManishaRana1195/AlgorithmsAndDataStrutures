@@ -8,6 +8,7 @@ public class WeightedQuickUnion {
   public WeightedQuickUnion(int numberOfNodes) {
     _numberOfNodes = numberOfNodes;
     _nodes = new int[numberOfNodes];
+    _treeSize = new int[numberOfNodes];
     for (int i = 0; i < numberOfNodes; i++) {
       _nodes[i] = i;
       _treeSize[i] = 1;
@@ -28,10 +29,10 @@ public class WeightedQuickUnion {
 
     if (sizeTreeP > sizeTreeQ) {
       _nodes[rootQ] = rootP;
-      _treeSize[rootQ] += _treeSize[rootP];
+      _treeSize[rootQ] += sizeTreeP;
     } else {
       _nodes[rootP] = rootQ;
-      _treeSize[rootP] += _treeSize[rootQ];
+      _treeSize[rootP] += sizeTreeQ;
     }
   }
 
