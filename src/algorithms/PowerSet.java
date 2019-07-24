@@ -1,12 +1,32 @@
 package algorithms;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PowerSet {
+
+
   public static void main(String[] args) {
-    Pattern pattern = Pattern.compile("(h\\w*a\\w*c\\w*k\\w*e\\w*r\\w*r\\w*a\\w*n\\w*k)");
-    Matcher matcher = pattern.matcher("hhaacckkekraraannk");
-    System.out.println(matcher.matches());
+    String inputString = "efgh";
+    Set<String> powerset = new HashSet<>();
+    generatePowerSet(inputString, "", 0, powerset);
+    for (String key: powerset) {
+      System.out.println(key);
+    }
+  }
+
+  private static void generatePowerSet(String inputString, String prefix, int index, Set<String> powerset) {
+    if (inputString.length() == index) {
+      powerset.add(prefix);
+      return;
+    }
+
+    generatePowerSet(inputString,
+        prefix + inputString.charAt(index),
+        index + 1, powerset);
+    generatePowerSet(inputString,
+        prefix , index+1, powerset);
+
   }
 }
