@@ -1,5 +1,8 @@
 package datastructures.stacks_queues;
 
+import java.util.EmptyStackException;
+import java.util.ListIterator;
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class QueueWithTwoStack {
@@ -16,29 +19,30 @@ public class QueueWithTwoStack {
   }
 
   public Integer remove() {
-    while (rearEnd.size() != 0) {
-      frontEnd.push(rearEnd.pop());
+    if (frontEnd.isEmpty() && rearEnd.isEmpty()) {
+      throw new NoSuchElementException("Queue is empty");
     }
 
-    Integer firstNode = frontEnd.pop();
-    while (frontEnd.size() != 0) {
-      rearEnd.push(frontEnd.pop());
+    if (frontEnd.isEmpty()) {
+      while (rearEnd.size() != 0) {
+        frontEnd.push(rearEnd.pop());
+      }
     }
-    return firstNode;
+    return frontEnd.pop();
   }
 
   public Integer peekFront() {
-    while (rearEnd.size() != 0) {
-      frontEnd.push(rearEnd.pop());
+    if (frontEnd.isEmpty() && rearEnd.isEmpty()) {
+      throw new NoSuchElementException("Queue is empty");
     }
 
-    Integer firstNode = frontEnd.peek();
-    while (frontEnd.size() != 0) {
-      rearEnd.push(frontEnd.pop());
+    if (frontEnd.isEmpty()) {
+      while (rearEnd.size() != 0) {
+        frontEnd.push(rearEnd.pop());
+      }
     }
 
-
-    return firstNode;
+    return frontEnd.peek();
   }
 
   public Integer peekEnd() {
@@ -49,9 +53,15 @@ public class QueueWithTwoStack {
   @Override
   public String toString() {
     StringBuilder queueContains = new StringBuilder();
+    ListIterator<Integer> iter = frontEnd.listIterator(frontEnd.size());
+    while (iter.hasPrevious()) {
+      queueContains.append(iter.previous()).append(" ==> ");
+    }
+
     for (Integer value: rearEnd) {
       queueContains.append(value).append(" ==> ");
     }
+
     return queueContains.toString();
   }
 
@@ -61,6 +71,7 @@ public class QueueWithTwoStack {
     queue.add(10);
     queue.add(16);
     queue.add(20);
+    System.out.println(queue);
 
     queue.remove();
     queue.remove();
