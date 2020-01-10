@@ -39,7 +39,7 @@ public class Reachability {
             adj[i] = new ArrayList<>();
         }
 
-        System.out.println("Enter the start abd end vertices.");
+        System.out.println("Enter the start and end vertices.");
         for (int i = 0; i < m; i++) {
             int x, y;
             x = scanner.nextInt();
