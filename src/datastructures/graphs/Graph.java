@@ -4,17 +4,24 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-class Graph {
+public class Graph {
   private List<ArrayList<Integer>> vertices;
+  private int numberOfVertices;
 
-  Graph(int numberOfVertices) {
+  public int getNumberOfVertices() {
+    return numberOfVertices;
+  }
+
+  public Graph(int numberOfVertices) {
     vertices = new LinkedList<>();
     for (int i = 0; i < numberOfVertices; i++) {
       vertices.add(i, new ArrayList<>());
     }
+    this.numberOfVertices = numberOfVertices;
+
   }
 
-  void addDirectedEdge(int vertex1, int vertex2) {
+  public void addDirectedEdge(int vertex1, int vertex2) {
     vertices.get(vertex1).add(vertex2);
   }
 
@@ -40,7 +47,7 @@ class Graph {
     vertices.get(vertex1).remove(vertex2);
   }
 
-  List<Integer> getAdjacentNodes(Integer node) {
+  public List<Integer> getAdjacentNodes(Integer node) {
     return vertices.get(node);
   }
 }
