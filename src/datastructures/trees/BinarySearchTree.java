@@ -151,9 +151,13 @@ public class BinarySearchTree {
 }
 
 class Node {
-  private Integer value;
-  private Node leftNode;
-  private Node rightNode;
+  Integer value;
+  Node leftNode;
+  Node rightNode;
+
+  public Node(Integer value){
+    this(value,null,null);
+  }
 
   public Node(Integer value, Node leftNode, Node rightNode) {
     this.value = value;

@@ -2,9 +2,11 @@ package datastructures.graphs;
 
 class GraphMatrix {
   private int[][] graph;
+  private int numberOfVertices;
 
   GraphMatrix(int vertices) {
     graph = new int[vertices][vertices];
+    numberOfVertices = vertices;
   }
 
   void addEdge(int vertex1, int vertex2) {
@@ -25,5 +27,17 @@ class GraphMatrix {
 
   void removeEdge(int vertex1, int vertex2) {
     graph[vertex1][vertex2] = 0;
+  }
+
+  void addExit(int vertex1, int vertex2) {
+    graph[vertex1][vertex2] = 2; // 2 represents exit
+  }
+
+  int getNumberOfVertices() {
+    return this.numberOfVertices;
+  }
+
+  public int get(int x, int y) {
+    return graph[x][y];
   }
 }
