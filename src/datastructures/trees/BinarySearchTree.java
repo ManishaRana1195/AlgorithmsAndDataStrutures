@@ -13,7 +13,7 @@ public class BinarySearchTree {
 
   private Node root = null;
 
-  public void insertNode(Integer value) {
+  private void insertNode(Integer value) {
     Node newNode = new Node(value, null, null);
     root = insert(root, newNode);
   }
@@ -50,7 +50,7 @@ public class BinarySearchTree {
         1. if the node is leaf node
         2. if the node has either left of right child
         3. if the node has both the child nodes
-        4. if the node doesnot exist in the tree
+        4. if the node does not exist in the tree
 
 */
       if (node.getLeftNode() == null) {
@@ -82,7 +82,7 @@ public class BinarySearchTree {
 
 
   /*to get prefix expression on of an expression tree*/
-  public void preorder(Node node) {
+  private void preorder(Node node) {
     if (node == null) return;
     System.out.println(node.getValue());
     preorder(node.getLeftNode());
@@ -90,7 +90,7 @@ public class BinarySearchTree {
   }
 
   /* postfix expression of an expression tree */
-  public void postorder(Node node) {
+  private void postorder(Node node) {
     if (node == null) return;
 
     postorder(node.getLeftNode());
@@ -99,14 +99,14 @@ public class BinarySearchTree {
   }
 
   /* to get nodes of tree in sorted order*/
-  public void inorder(Node node) {
+  private void inorder(Node node) {
     if (node == null) return;
     inorder(node.getLeftNode());
     System.out.println(node.getValue());
     inorder(node.getRightNode());
   }
 
-  public void levelOrder() {
+  private void levelOrder() {
     LinkedList<Node> visitedNodes = new LinkedList<>();
     HashMap<Integer, Boolean> isVisited = new HashMap<>();
     visitedNodes.push(root);
@@ -143,9 +143,7 @@ public class BinarySearchTree {
     tree.insertNode(230);
     tree.print();
     System.out.println("***************************************************************");
-    tree.deleteNode(40);
-    tree.deleteNode(80);
-    tree.deleteNode(50);
+
     tree.levelOrder();
   }
 }
