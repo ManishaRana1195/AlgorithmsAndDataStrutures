@@ -3,7 +3,7 @@ package algorithms.Recursion;
 public class AllPermutations {
 
     public static void main(String[] args) {
-        int[] input = new int[]{2, 4, 5};
+        int[] input = new int[]{2, 4, 2};
 
         int[] buffer = new int[input.length];
         boolean[] isInBuffer = new boolean[input.length];

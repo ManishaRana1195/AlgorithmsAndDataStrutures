@@ -3,7 +3,7 @@ package algorithms.Recursion;
 import java.util.Stack;
 
 // you should find combination of coin values that sum up to target
-public class CoinChangeProblem {
+public class CoinChangePrintProblem {
 
     public static void main(String[] args) {
         int[] dimensions = new int[]{1, 2, 5};
@@ -12,7 +12,6 @@ public class CoinChangeProblem {
         // use stack to avoid succeeding zeros in the result
         Stack<Integer> buffer = new Stack<>();
         getAllCoinCombination(dimensions, buffer, 0, sum);
-
     }
 
     private static void getAllCoinCombination(int[] dimensions, Stack<Integer> buffer, int startIndex, int sum) {
