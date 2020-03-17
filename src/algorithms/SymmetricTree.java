@@ -1,6 +1,8 @@
 package algorithms;
 
 
+import datastructures.graphs.TreeNode;
+
 public class SymmetricTree {
 
   public static void main(String[] args) {
@@ -32,20 +34,10 @@ public class SymmetricTree {
     if (p == null || q == null)
       return false;
 
-    if (q.value.equals(p.value)) {
+    if (q.val == p.val) {
       return isSymmetric(p.left, q.right) && isSymmetric(q.left, p.right);
     }
 
     return false;
-  }
-}
-
-class TreeNode {
-  TreeNode left;
-  TreeNode right;
-  Integer value;
-
-  TreeNode(Integer value) {
-    this.value = value;
   }
 }
