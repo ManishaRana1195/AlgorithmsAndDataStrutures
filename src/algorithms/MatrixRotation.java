@@ -9,7 +9,33 @@ public class MatrixRotation {
         {13, 14, 15, 16}};
 
     int[][] rotatedMatrix = rotateMatrix(matrix);
+    printMatrix(rotatedMatrix);
+    System.out.println("*************************");
+    matrix = new int[][]{
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 16}
+    };
+    int length = matrix.length;
+    for (int layer = 0; layer < length / 2; layer++) {
+      rotateByLayer(matrix, layer, length - 1 - layer);
+    }
+    printMatrix(matrix);
+  }
 
+  private static void rotateByLayer(int[][] matrix, int start, int end) {
+    int len = matrix.length - 1;
+    for (int j = start; j < end; j++) {
+      int temp = matrix[j][start];
+      matrix[j][start] = matrix[end][j];
+      matrix[end][j] = matrix[len - j][end];
+      matrix[len - j][end] = matrix[start][len - j];
+      matrix[start][len - j] = temp;
+    }
+  }
+
+  private static void printMatrix(int[][] rotatedMatrix) {
     for (int i = 0; i < rotatedMatrix.length; i++) {
       for (int j = 0; j < rotatedMatrix.length; j++) {
         System.out.print(rotatedMatrix[i][j] + "\t");
