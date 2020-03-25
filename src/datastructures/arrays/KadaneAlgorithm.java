@@ -12,6 +12,7 @@ public class KadaneAlgorithm {
             maxTotal = Math.max(maxHere, maxTotal);
         }
 
+        // this is non contiguous array sum
         System.out.println("The maximum sum of subarray possible:");
         System.out.println(maxTotal);
     }
