@@ -12,7 +12,7 @@ import java.util.Objects;
  * PQ is implemented in either maxHeap or minHeap*/
 
 /*Implementing Max heap, a binary tree with max heap invariant*/
-public class PriorityQueue {
+class PriorityQueue<P> {
 
     private int heapSize = 0;
     private List<Integer> heap;
@@ -124,7 +124,7 @@ public class PriorityQueue {
     }
 
     public static void main(String[] args) {
-        PriorityQueue pq = new PriorityQueue();
+        PriorityQueue<P> pq = new PriorityQueue<P>();
         pq.insert(10);
         pq.insert(5);
         pq.insert(30);
