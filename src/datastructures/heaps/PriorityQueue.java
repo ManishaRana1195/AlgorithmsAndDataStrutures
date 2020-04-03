@@ -124,7 +124,7 @@ class PriorityQueue<P> {
     }
 
     public static void main(String[] args) {
-        PriorityQueue<P> pq = new PriorityQueue<P>();
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
         pq.insert(10);
         pq.insert(5);
         pq.insert(30);

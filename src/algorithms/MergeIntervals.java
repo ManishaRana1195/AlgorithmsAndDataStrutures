@@ -5,6 +5,8 @@ import java.util.*;
 public class MergeIntervals {
     public static void main(String[] args) {
         int[][] schedule = {{1, 3}, {2, 6}, {8, 10}, {15, 18}, {17, 20}};
+
+        if (schedule.length == 0) return;
         List<Interval> input = getIntervals(schedule);
         sortInterval(input);
         merge(input);
