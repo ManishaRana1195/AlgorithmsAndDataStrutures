@@ -7,7 +7,11 @@ public class KPointsCloserToOrigin {
     public static void main(String[] args) {
         int[][] points = new int[3][3];
         int K = 0;
-        java.util.PriorityQueue<Distance> pq = new PriorityQueue<>((o1, o2) -> (int) (o2.dist - o1.dist));
+        java.util.PriorityQueue<Distance> pq = new PriorityQueue<>((o1, o2) -> {
+            if (o2.dist == o1.dist) return 0;
+            if (o2.dist > o1.dist) return 1;
+            return -1;
+        });
 
         int minLength = Math.min(points.length, K);
 
@@ -15,7 +19,8 @@ public class KPointsCloserToOrigin {
             pq.add(new Distance(points[i][0], points[i][1]));
         }
 
-        for (int i = minLength + 1; i < K; i++) {
+
+        for (int i = minLength; i < K; i++) {
             int x = points[i][0];
             int y = points[i][1];
             double currRoot = Math.sqrt(x * x + y * y);
@@ -24,6 +29,7 @@ public class KPointsCloserToOrigin {
                 pq.add(new Distance(x, y));
             }
         }
+
 
         int[][] result = new int[K][2];
 
@@ -49,6 +55,6 @@ class Distance {
     public Distance(int x, int y) {
         this.x = x;
         this.y = y;
-        dist = Math.sqrt(x * x + y * y);
+        this.dist = Math.sqrt(x * x + y * y);
     }
 }

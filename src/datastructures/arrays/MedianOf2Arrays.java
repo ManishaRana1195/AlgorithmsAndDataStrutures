@@ -23,11 +23,13 @@ public class MedianOf2Arrays {
     }
 
     private static void getMedian(int[] num2, int total) {
-        int median;
+        float median;
 
         if (total % 2 == 0) {
             int temp = total / 2;
-            median = (num2[temp] + num2[temp + 1]) / 2;
+            int a = num2[temp];
+            int b = num2[temp - 1];
+            median = (float) ((a + b) / 2.0);
         } else {
             median = num2[total/2];
         }

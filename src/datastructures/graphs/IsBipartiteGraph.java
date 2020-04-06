@@ -40,9 +40,10 @@ public class IsBipartiteGraph {
             currentColor = getColor(colorMap, first);
             for (int neighbor : graph[first]) {
                 int neighborColor = getColor(colorMap, neighbor);
-                if (neighborColor == currentColor) {
+                if (neighborColor == currentColor)
                     return false;
-                } else if (neighborColor == -1 && currentColor != neighbor) {
+
+                if (neighborColor == -1 && currentColor != neighborColor) {
                     colorMap.put(neighbor, 1 - currentColor);
                     queue.add(neighbor);
                 }
