@@ -1,18 +1,21 @@
 package datastructures.arrays;
 
+import java.util.Arrays;
+
 public class BigIntegerMultiplication {
 
     public static void main(String[] args) {
-        int inputA[] = {3, 2, 4};
-        int inputB[] = {1, 1, 9};
-        int lenA = inputB.length;
+        int inputA[] = {3, 4};
+        int inputB[] = {1, 5};
+        int lenA = inputA.length;
         int lenB = inputB.length;
         int zeroCount = 0;
-        int result[] = new int[lenA];
+        int maxLength = Math.max(lenA, lenB) + 1;
+        int result[] = new int[maxLength];
 
         for (int i = lenB - 1; i >= 0; i--) {
             int carry = 0;
-            int[] temp = new int[lenA + 1 + zeroCount];
+            int[] temp = new int[maxLength + zeroCount];
             zeroCount += 1;
             for (int j = lenA - 1; j >= 0; j--) {
                 int ans = inputA[i] * inputB[j] + carry;
@@ -21,13 +24,45 @@ public class BigIntegerMultiplication {
                 temp[j + 1] = sum;
             }
             temp[0] = carry;
-            result = add(result, temp);
+            result = add(temp, result);
         }
+
+        System.out.println(Arrays.toString(result));
 
     }
 
-    private static int[] add(int[] result, int[] temp) {
-        // add 2 arrays
-        return new int[0];
+    private static int[] add(int[] arrayA, int[] arrayB) {
+        int i = arrayA.length - 1;
+        int j = arrayB.length - 1;
+        int carry = 0;
+        int len = Math.max(i, j) + 1;
+        int result[] = new int[len];
+        int k = len - 1;
+
+        while (i >= 0 && j >= 0) {
+            int sum = arrayA[i] + arrayB[j] + carry;
+            result[k] = sum % 10;
+            carry = sum / 10;
+            k--;
+            i--;
+            j--;
+        }
+
+        while (i >= 0) {
+            int sum = arrayA[i] + carry;
+            result[k] = sum % 10;
+            carry = sum / 10;
+            k--;
+            i--;
+        }
+
+        while (j >= 0) {
+            int sum = arrayB[j] + carry;
+            result[k] = sum % 10;
+            carry = sum / 10;
+            k--;
+            j--;
+        }
+        return result;
     }
 }
