@@ -48,7 +48,7 @@ public class WordBreakProblem {
         set.add("like");
         set.add("mango");
         set.add("tango");
-        set.add("man");
+       // set.add("man");
         set.add("tan");
         set.add("go");
         return set;
